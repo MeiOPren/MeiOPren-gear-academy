@@ -181,11 +181,11 @@ mod tests {
         let program = Program::current(&system);
         system.mint_to(USER_OWNER, 450000000000000000);
         let _ = program.send(USER_OWNER, PEBBLES_INIT.clone());
-            let random_count = 1;
-            program.send(USER_OWNER, PebblesAction::Turn(random_count));
-            system.run_next_block();
-            let game_state: GameState = program.read_state(b"").expect("Failed to read state");
-            assert_eq!(14, game_state.pebbles_count - random_count);
+        let random_count = 1;
+        program.send(USER_OWNER, PebblesAction::Turn(random_count));
+        system.run_next_block();
+        let game_state: GameState = program.read_state(b"").expect("Failed to read state");
+        assert_eq!(14, game_state.pebbles_count - random_count);
     }
 
     #[test]
